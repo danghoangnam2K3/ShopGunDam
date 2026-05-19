@@ -486,7 +486,7 @@ img { max-width: 100%; height: auto; display: block; }
    RESPONSIVE MEDIA QUERIES
    ========================================= */
 @media (max-width: 992px) {
-    .spotlight-wrapper { grid-template-columns: 1fr; }
+    .spotlight-wrapper { grid-template-columns: 1fr; padding: 30px; }
     .spotlight-visual { height: 300px; grid-row: 1; }
     .bento-grid-container { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
     .bento-large { grid-column: span 2; grid-row: span 1; height: 300px;}
@@ -495,17 +495,44 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 768px) {
-    .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: rgba(5, 7, 10, 0.95); backdrop-filter: blur(10px); padding: 80px 40px; flex-direction: column; transition: right 0.4s ease; border-left: 1px solid var(--border-color); }
+    .section { padding: 60px 0; }
+    
+    .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: rgba(5, 7, 10, 0.95); backdrop-filter: blur(10px); padding: 80px 40px; flex-direction: column; transition: right 0.4s ease; border-left: 1px solid var(--border-color); z-index: 999; }
     .nav-menu.show-menu { right: 0; }
     .nav-list { flex-direction: column; gap: 30px; }
     .nav-close, .nav-toggle { display: block; }
     .nav-close { position: absolute; top: 25px; right: 25px; }
     .search-box { display: none; }
     
-    .hero-title { font-size: 3rem; }
-    .footer-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1rem; padding: 0 10px; }
+    .hero-actions { flex-direction: column; gap: 15px; }
+    
+    .section-title { font-size: 2rem; }
+    .flex-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    
+    .spotlight-wrapper { padding: 20px; }
+    .spotlight-title { font-size: 2rem; }
+    .spotlight-price { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .visual-bg-circle { width: 200px; height: 200px; }
+    .visual-bg-crosshair { width: 250px; height: 250px; }
+    
+    .universe-card { min-width: 250px; height: 350px; }
+    
+    .footer-top { flex-direction: column; gap: 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+    
     .bento-grid-container { grid-template-columns: 1fr; }
     .bento-large, .bento-medium, .bento-wide { grid-column: span 1; }
     .bento-wide .bento-split { flex-direction: column; }
     .bento-wide img { width: 100%; height: 200px; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 2rem; }
+    .spotlight-title { font-size: 1.8rem; }
+    .visual-bg-circle { width: 150px; height: 150px; }
+    .visual-bg-crosshair { width: 200px; height: 200px; }
+    .digital-price { font-size: 1.5rem; }
+    .cubes-container { display: none; } /* Giấu khối 3D trên màn hình quá nhỏ để mượt hơn */
 }
