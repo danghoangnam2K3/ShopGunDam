@@ -19,9 +19,9 @@
     
     --border-color: rgba(59, 130, 246, 0.3);
     
-    --font-heading: 'Orbitron', sans-serif;
-    --font-subheading: 'Rajdhani', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-subheading: 'Roboto', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
     
     --header-height: 80px;
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
