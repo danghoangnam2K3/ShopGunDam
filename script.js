@@ -132,7 +132,7 @@ setInterval(() => {
 /* =========================================
    STORE DYNAMIC FILTERING & SORTING PROTOCOL
    ========================================= */
-const storeLayout = document.querySelector('.store-layout');
+const storeLayout = document.querySelector('.store-container');
 
 if (storeLayout) {
     const searchInput = document.querySelector('.sidebar-search-input');
@@ -284,4 +284,52 @@ if (storeLayout) {
         priceMaxVal.textContent = formatVND(priceSlider.value);
     }
     filterProducts();
+}
+
+/* =========================================
+   TUTORIAL PORTAL FILTERING & SEARCH
+   ========================================= */
+const tutorialPortal = document.querySelector('.tutorial-portal');
+
+if (tutorialPortal) {
+    const filterBtns = document.querySelectorAll('.portal-filter-btn');
+    const tutorialCards = document.querySelectorAll('.tutorial-card');
+    const guideSearch = document.querySelector('.search-input');
+
+    function filterTutorials() {
+        const activeBtn = document.querySelector('.portal-filter-btn.active');
+        const filterValue = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+        const searchQuery = guideSearch ? guideSearch.value.toLowerCase().trim() : '';
+
+        tutorialCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const title = card.querySelector('h3').textContent.toLowerCase();
+
+            const matchesCategory = filterValue === 'all' || category === filterValue;
+            const matchesSearch = searchQuery === '' || title.includes(searchQuery);
+
+            if (matchesCategory && matchesSearch) {
+                card.classList.remove('hide');
+                card.style.opacity = '0';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transition = 'opacity 0.4s ease';
+                }, 10);
+            } else {
+                card.classList.add('hide');
+            }
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterTutorials();
+        });
+    });
+
+    if (guideSearch) {
+        guideSearch.addEventListener('input', filterTutorials);
+    }
 }
