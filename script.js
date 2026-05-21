@@ -116,3 +116,51 @@ setInterval(() => {
         }
     });
 }, 2000);
+
+/* =========================================
+   TOOL CARDS GLOW EFFECT
+   ========================================= */
+const toolCards = document.querySelectorAll('.tool-card');
+toolCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+
+/* =========================================
+   TOOLS FILTERING
+   ========================================= */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const toolItems = document.querySelectorAll('.tool-card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Active button state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter logic
+        const filterValue = btn.textContent.toLowerCase();
+        
+        toolItems.forEach(item => {
+            const category = item.querySelector('.tc-cat').textContent.toLowerCase();
+            if (filterValue === 'tất cả' || category.includes(filterValue)) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400);
+            }
+        });
+    });
+});
