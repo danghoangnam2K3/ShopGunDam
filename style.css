@@ -864,12 +864,35 @@ img {
     }
 }
 
-.spotlight-img {
-    position: relative;
-    z-index: 2;
-    max-height: 110%;
-    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+.spotlight-img { position: relative; z-index: 2; max-height: 100%; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)); transition: var(--transition); }
+
+/* Spotlight Nav Buttons (Positioned inside but at the edges to avoid overlap) */
+.spotlight-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(5, 7, 10, 0.8);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
 }
+
+.spotlight-nav:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
 
 /* =========================================
    BENTO GRID SECTION (MASONRY)
